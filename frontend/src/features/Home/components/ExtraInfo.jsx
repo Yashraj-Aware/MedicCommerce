@@ -13,6 +13,7 @@ const ExtraInfo = () => {
             stroke="currentColor"
             class="w-12 h-12 text-emerald-700"
           >
+          <div className="profile"></div>
           
             <path
               stroke-linecap="round"
