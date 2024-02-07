@@ -1,15 +1,14 @@
 const userModel = require('../models/userModel')
 const jwt = require('jsonwebtoken')
-// const hashPassword = require('../helper/authHelper')
 const registerController = async(req, res) => {
 
     try {
         const {name, email , password, phone, address} = req.body
         const user = await userModel.register(name, email , password, phone, address)
         //calling res
-        res.status(200).send({
-            success: true,
-            message: 'User Registration is Successfull',
+        res.status(200).json({
+            // success: true,
+            // message: 'User Registration is Successfull',
             user
         })
 
@@ -46,6 +45,7 @@ const loginController = async(req, res) => {
                 email: user.email,
                 phone: user.phone,
                 address: user.address,
+                _id: user._id
             },
             token,
         })

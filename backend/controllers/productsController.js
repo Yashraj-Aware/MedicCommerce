@@ -1,31 +1,50 @@
 const mongoose = require('mongoose')
 const productsModel = require('../models/productModel')
 const categoryModel = require('../models/categoryModel')
+const cloudinary = require("../helper/productHelper")
 const fs = require('fs')
 
 //to create product
 const createProduct = async(req,res) => {
     // const {img} = req.files
-    // const{name, price, stars, category, description, quantity} = req.fields
-
-
-
+    const{image} = req.fields
 
     try {
+        if(image)
+        {
+            const uploadRes = await cloudinary.uploader.upload(image,{
+                upload_preset: "prodUpload"
+            })
+
+            if(uploadRes)
+            {
+                try {
 
 
         
-        const product = await productsModel({...req.fields});
-    
-
-    
-        await product.save()
-
-        // res.status(201).json({success: true, message: 'creation successfull', product})
-        res.status(201).json(product)
+                    const product = new productsModel({
+                        ...req.fields,
+                        image: uploadRes
+                    })
+                
+            
+                
+                    await product.save()
+            
+                    // res.status(201).json({success: true, message: 'creation successfull', product})
+                    res.status(201).json(product)
+                } catch (error) {
+                    res.status(500).json({success: false, error: `${error.message}`, message: "error occured during creation of product"})
+                }
+            }
+        }
     } catch (error) {
-        res.status(500).json({success: false, error: `${error.message}`, message: "error occured during creation of product"})
+        
     }
+
+
+
+
 }
 
 
@@ -60,23 +79,6 @@ const getAllProducts = async(req,res) => {
     }
 }
 
-const getProductImage = async(req,res) => {
-
-    console.log(req.params.id);
-    try {
-        const prodImage = await productsModel.findById(req.params.id).select("img")
-        console.log(prodImage.img.data);
-        if(prodImage?.img?.data)
-        {
-            res.set('Content-type', prodImage.img.contentType)
-            return res.status(200).json(prodImage.img.data)
-        }
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({success: false, error: `${error.message}`, message: "unable to retrieve the image of product"})
-        
-    }
-}
 
 // get single product
 
