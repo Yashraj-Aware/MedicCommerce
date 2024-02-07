@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --bg-color: rgb(243, 244, 246);
+    --btn-color: rgb(10,144,115);
+}
+
