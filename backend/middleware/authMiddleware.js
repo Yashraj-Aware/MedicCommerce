@@ -25,7 +25,7 @@ const isAdmin = async(req,res,next) => {
 
         if(user.role !== 1)
         {
-            return res.status(401).send({
+            return res.status(401).json({
                 success: false,
                 message: "UnAuthorized Access, Restricted to Admin Only"
             })
