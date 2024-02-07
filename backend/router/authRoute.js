@@ -13,6 +13,8 @@ router.post("/login", loginController);
 
 
 //testing middleware routes
-router.post("/test", isAdmin,requireSignIn,testController)
+router.post("/test",requireSignIn,testController)
+
+
 
 module.exports =  router;
