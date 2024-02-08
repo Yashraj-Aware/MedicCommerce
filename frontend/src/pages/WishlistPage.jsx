@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../features/navbar/Navbar'
-import Wishlist from '../features/Profile/components/Wishlist'
+import Wishlist from '../features/Profile/Wishlist'
 
 const WishlistPage = () => {
   return (

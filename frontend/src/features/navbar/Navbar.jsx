@@ -136,7 +136,7 @@ export default function Navbar() {
                        {user ? (<>
 
 
-                        <Menu.Item>
+                        {/* <Menu.Item>
                         {({ active }) => (
                           <a
                             href="/profile"
@@ -145,7 +145,7 @@ export default function Navbar() {
                             My Account
                           </a>
                         )}
-                      </Menu.Item>
+                      </Menu.Item> */}
                       <Menu.Item>
                         {({ active }) => (
                           <a
