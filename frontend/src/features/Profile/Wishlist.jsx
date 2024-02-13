@@ -18,6 +18,10 @@ const Wishlist = () => {
     dispatch(afterAddRemove(item))
   }
 
+  const handleRemove = (item) => {
+    dispatch(afterAddRemove(item));
+  }
+
 
   
 
@@ -26,6 +30,7 @@ const Wishlist = () => {
 
 
   return (
+    // { wishlistState.wishlistProducts.length === 0 ?}
     <main className="mx-auto max-w-7xl ">
       <div className="flex items-baseline justify-between border-b border-gray-200 pb-12 pt-24 bg-[#c7dde8]">
         <h1 className="sm:text-4xl lg:text-4xl ml-7 mb-7 font-bold tracking-tight text-gray-900 ">
@@ -50,7 +55,7 @@ const Wishlist = () => {
                   <div>
                   <h3>{item.name}</h3>
                 <p>{item.description}</p>
-                <button >Remove</button>
+                <button onClick={() => handleRemove(item)}  >Remove</button>
                   </div>
                 </div>
                 <div className={styles.cartProductPrice}>{item.price}</div>
@@ -69,6 +74,7 @@ const Wishlist = () => {
       </div>
 
     </main>
+    
   )
 }
 
