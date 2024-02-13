@@ -7,6 +7,8 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import CartPage from "./pages/CartPage";
 import ProfilePage from "./pages/ProfilePage";
+import WishlistPage from "./pages/WishlistPage";
+import MyOrdersPage from "./pages/MyOrdersPage";
 import {
   RouterProvider,
   Route,
@@ -23,6 +25,8 @@ const router = createBrowserRouter(
       <Route path="/login" element={<LoginPage />}></Route>
       <Route path="/cart" element={<CartPage />}></Route>
       <Route path="/profile" element={<ProfilePage />}></Route>
+      <Route path="/wishlist" element={<WishlistPage />}></Route>
+      <Route path="/myorders" element={<MyOrdersPage />}></Route>
     </Route>
   )
 );

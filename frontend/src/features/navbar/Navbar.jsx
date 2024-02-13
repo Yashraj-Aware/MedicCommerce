@@ -118,11 +118,6 @@ export default function Navbar() {
                     <Menu.Button className="relative flex rounded-full  text-white ">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-                      {/* <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      /> */}
                       <UserIcon className=' w-6 h-6 hover:text-white' />
                     </Menu.Button>
                   </div>
@@ -141,17 +136,17 @@ export default function Navbar() {
                        {user ? (<>
 
 
-                        <Menu.Item>
+                        {/* <Menu.Item>
                         {({ active }) => (
                           <a
                             href="/profile"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            My Orders
+                            My Account
                           </a>
                         )}
-                      </Menu.Item>
-                      {/* <Menu.Item>
+                      </Menu.Item> */}
+                      <Menu.Item>
                         {({ active }) => (
                           <a
                             href="/wishlist"
@@ -160,7 +155,17 @@ export default function Navbar() {
                             Wishlist
                           </a>
                         )}
-                      </Menu.Item> */}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="/myorders"
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                          >
+                            My Orders
+                          </a>
+                        )}
+                      </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -199,37 +204,6 @@ export default function Navbar() {
                       </Menu.Item>
                         </>
                        )}
-                      
-                      {/* <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="/profile"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            My Account
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="/wishlist"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Wishlist
-                          </a>
-                        )}
-                      </Menu.Item> */}
-                      {/* <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item> */}
                     </Menu.Items>
                   </Transition>
                 </Menu>
