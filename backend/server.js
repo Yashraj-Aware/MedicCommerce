@@ -5,12 +5,15 @@ const mongoose = require('mongoose')
 const authRoutes = require('./router/authRoute')
 const categoryRoutes = require('./router/categoryRoute')
 const productRoutes = require('./router/productsRoute')
+const paymentRoutes = require('./router/paymentRoute')
 
 const app = express()
+
 
 //middleware
 app.use(express.json())
 app.use(cors())
+
 
 
 // log of all the actions
@@ -23,6 +26,7 @@ app.use((req, res, next) => {
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/category', categoryRoutes)
 app.use('/api/v1/products', productRoutes)
+app.use('/api/v1/stripe',paymentRoutes)
 
 //connextion to db
 mongoose

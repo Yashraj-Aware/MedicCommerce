@@ -42,7 +42,7 @@
 
 .cartContainer .titles .total {
     padding-right:0.5rem ;
-    justify-self: right;
+    justify-self: center;
 }
 
 .cartItem .cartProduct {
@@ -105,6 +105,12 @@
     color: grey;
     outline: none;
     background: none;
+    
+}
+
+.cartSummary .clearCart:hover {
+    border: 0.5px solid red;
+    color: red;
 }
 
 .cartCheckout {
@@ -116,6 +122,9 @@
     display: flex;
     justify-content: space-between;
     font-size: 20px;
+}
+ .cartProductTotalPrice {
+    justify-self: center;
 }
 
 .cartCheckout .subtotal .amount {
@@ -136,7 +145,7 @@
     border: none;
     outline: none;
     margin-top: 0.7rem;
-    background: #4b70e2;
+    /* background: #4b70e2; */
     color: white;
 }
 

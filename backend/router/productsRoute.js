@@ -14,6 +14,8 @@ router.get("/get-product/:id", getSingleProduct)
 
 router.post("/fil-product", getfilteredProducts)
 
+
+
 // router.get("/get-product-img/:id", getProductImage)
 
 module.exports = router;

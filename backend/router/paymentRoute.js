@@ -1,0 +1,72 @@
+require('dotenv').config()
+const express = require("express");
+const Stripe = require('stripe')
+const stripe = Stripe(process.env.STRIPE_KEY)
+
+
+// router object
+const router = express.Router();
+
+
+router.post('/create-checkout-session',async (req, res) => {
+
+    const line_items = req.body.cartItems.map((item) => {
+        return {
+            // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+          //   name: 'T-shirt',
+          //   quantity: 1,
+          price_data: {
+              currency: "inr",
+              product_data: {
+                  name: item.name,
+                  images: [item.imgURL],
+                  description: item.description,
+                  metadata: {
+                    id: item._id
+                  }
+              },
+              unit_amount: item.price*100,
+          },
+          quantity: item.cartQuantity,
+          };
+    })
+    const session = await stripe.checkout.sessions.create({
+      line_items,
+      mode: 'payment',
+      success_url: `${process.env.CLIENT}?success=true`,
+      cancel_url: `${process.env.CLIENT}?canceled=true`,
+    });
+    console.log();
+  
+    res.send({url: session.url});
+  })
+// This is a public sample test API key.
+// Don’t submit any personally identifiable information in requests made with this key.
+// Sign in to see your own test API key embedded in code samples.
+// const stripe = require('stripe')('sk_test_tR3PYbcVNZZ796tH88S4VQ2u');
+// const express = require('express');
+// const app = express();
+// app.use(express.static('public'));
+
+// const YOUR_DOMAIN = 'http://localhost:4242';
+
+// app.post('/create-checkout-session', async (req, res) => {
+//   const session = await stripe.checkout.sessions.create({
+//     line_items: [
+//       {
+//         // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+//         price: '{{PRICE_ID}}',
+//         quantity: 1,
+//       },
+//     ],
+//     mode: 'payment',
+//     success_url: `${YOUR_DOMAIN}?success=true`,
+//     cancel_url: `${YOUR_DOMAIN}?canceled=true`,
+//   });
+
+//   res.redirect(303, session.url);
+// });
+
+// app.listen(4242, () => console.log('Running on port 4242'));
+
+module.exports = router

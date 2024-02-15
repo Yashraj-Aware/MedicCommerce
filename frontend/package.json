@@ -30,7 +30,8 @@
     "react-scripts": "5.0.1",
     "react-simple-star-rating": "^5.1.7",
     "react-star-ratings": "^2.3.0",
-    "react-stars": "^2.2.5"
+    "react-stars": "^2.2.5",
+    "stripe": "^14.16.0"
   },
   "scripts": {
     "start": "react-scripts start",

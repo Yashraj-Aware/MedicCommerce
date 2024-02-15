@@ -4,6 +4,7 @@ import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import styles from '../components/cart.module.css'
 import {useSelector,  useDispatch} from 'react-redux'
 import { removeFromCart, decreaseCart, addToCart, clearCart, getCartTotal } from '../CartSlice'
+import PayButton from './PayButton'
 const Cart = () => {
   const cartState = useSelector(state => state.cart)
   const dispatch  = useDispatch()
@@ -11,6 +12,10 @@ const Cart = () => {
   useEffect(() => {
     dispatch(getCartTotal())
   }, [cartState, dispatch])
+
+  const handleCheckout = (items) => {
+     console.log(items);
+  }
 
   const handleClick = (item) => {
     dispatch(removeFromCart(item))
@@ -77,7 +82,7 @@ const Cart = () => {
                     <span className={styles.amount}>₹{cartState.cartAmount}</span>
                   </div>
                   <p>Taxes and Shipping at Checkout page</p>
-                  <button>Checkout</button>
+                  <PayButton cartItems = {cartState.cartProducts}/>
                   <div className={styles.continueShopping}>
               <Link to="/shop">
                 <ArrowLeftIcon className='h-5 w-5'/>
